@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Mbagi Ltd.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/mbagilogo.png" alt="Mbagi Ltd. Logo">
+            </div>
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+            <a href="contact.html" class="contact-btn">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="projects-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Our Projects</h1>
+            <p>Excellence in Every Detail</p>
+        </div>
+        <div class="scroll-prompt">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Residential Projects -->
+    <section id="residential-projects" class="projects-section">
+        <h2>Residential Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-project="residential1">
+                <div class="project-image">
+                    <img src="images/roslyn1.jpg" alt="Roslyn Mansions">
+                </div>
+                <div class="project-info">
+                    <h3>Roslyn Gardens</h3>
+                    <p>Compound Mansions</p>
+                </div>
+            </div>
+            <div class="project-card" data-project="residential2">
+                <div class="project-image">
+                    <img src="images/uthiru0.jpg" alt="Uthiru Condos">
+                </div>
+                <div class="project-info">
+                    <h3>Uthiru Condos</h3>
+                    <p>Apartment Style</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Projects -->
+    <section id="commercial-projects" class="projects-section">
+        <h2>Commercial Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" data-project="commercial1">
+                <div class="project-image">
+                    <img src="images/projects/commercial1.jpg" alt="Agip House">
+                </div>
+                <div class="project-info">
+                    <h3>Agip House</h3>
+                    <p>Office Complex</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-slideshow">
+                <!-- Slides will be inserted here by JavaScript -->
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-title"></h2>
+                <div class="project-details">
+                    <div class="detail">
+                        <i class="fas fa-ruler-combined"></i>
+                        <span id="modal-dimensions"></span>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modal-location"></span>
+                    </div>
+                </div>
+                <p id="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
