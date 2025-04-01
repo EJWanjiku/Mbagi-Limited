@@ -111,6 +111,13 @@ function openProjectModal(projectId) {
             location: 'Harambee Avenue, Nairobi',
             description: 'Premium office complex in the heart of Nairobi CBD. The building offers modern office spaces, meeting facilities, ample parking, and 24/7 security. Ideal for businesses looking for a prestigious address with excellent amenities.',
             images: ['images/agip1.jpg', 'images/agip2.jpg', 'images/agip3.jpg']
+        },
+        'commercial2': {
+            title: 'Mumwe Oak',
+            dimensions: '100000 sq ft',
+            location: 'Runda Mumwe, Kiambu',
+            description: 'A state-of-the-art educational facility designed to foster learning and development. The complex features modern classrooms, well-equipped science labs, sports facilities, and administrative offices. The campus includes secure parking, recreational areas, and 24/7 security to ensure a safe learning environment.',
+            images: ['images/mumwe2.jpg', 'images/mumwe3.jpg', 'images/mumwe4.jpg']
         }
     };
 
