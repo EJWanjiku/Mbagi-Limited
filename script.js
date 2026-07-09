@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initializeNavigation() {
     const navLinks = document.querySelectorAll(".nav-links a");
+    const navToggle = document.getElementById("nav-toggle");
+    const navbar = document.querySelector(".navbar");
+
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             if (this.getAttribute("href").startsWith("#")) {
@@ -18,8 +21,22 @@ function initializeNavigation() {
                 const targetId = this.getAttribute("href").substring(1);
                 scrollToSection(targetId);
             }
+            // Close the mobile menu after a link is tapped
+            if (navToggle) {
+                navToggle.checked = false;
+            }
         });
     });
+
+    if (navbar) {
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 20) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    }
 }
 
 function initializeHeroSlideshow() {
@@ -79,6 +96,7 @@ function openProjectModal(projectId) {
     const projects = {
         'residential1': {
             title: 'Roslyn Gardens',
+            category: 'Residential Property',
             dimensions: '10,000 sq ft',
             location: 'Roslyn, Nairobi',
             description: 'A collection of luxurious mansions set in a serene compound. Each home features premium finishes, spacious living areas, modern amenities, and beautiful landscaping. The development includes private gardens, secure parking, and 24/7 security.',
@@ -91,6 +109,7 @@ function openProjectModal(projectId) {
         },
         'residential2': {
             title: 'Uthiru Condos',
+            category: 'Residential Property',
             dimensions: '3,500 sq ft per unit',
             location: 'Uthiru, Nairobi',
             description: 'Modern apartment complex offering contemporary living spaces with stunning views. Features include open-plan layouts, high-end finishes, communal gardens, and secure parking. Perfect for urban professionals and families.',
@@ -107,6 +126,7 @@ function openProjectModal(projectId) {
         },
         'commercial1': {
             title: 'Agip House',
+            category: 'Commercial Property',
             dimensions: '25,000 sq ft',
             location: 'Harambee Avenue, Nairobi',
             description: 'Premium office complex in the heart of Nairobi CBD. The building offers modern office spaces, meeting facilities, ample parking, and 24/7 security. Ideal for businesses looking for a prestigious address with excellent amenities.',
@@ -114,6 +134,7 @@ function openProjectModal(projectId) {
         },
         'commercial2': {
             title: 'Mumwe Oak',
+            category: 'Commercial Property',
             dimensions: '100000 sq ft',
             location: 'Runda Mumwe, Kiambu',
             description: 'A state-of-the-art educational facility designed to foster learning and development. The complex features modern classrooms, well-equipped science labs, sports facilities, and administrative offices. The campus includes secure parking, recreational areas, and 24/7 security to ensure a safe learning environment.',
@@ -131,6 +152,7 @@ function openProjectModal(projectId) {
 
     // Update modal content
     document.getElementById('modal-title').textContent = project.title;
+    document.getElementById('modal-category').textContent = project.category || 'Property';
     document.getElementById('modal-dimensions').textContent = project.dimensions;
     document.getElementById('modal-location').textContent = project.location;
     document.getElementById('modal-description').textContent = project.description;
@@ -148,14 +170,32 @@ function openProjectModal(projectId) {
                 <img src="${img}" alt="${project.title} - View ${index + 1}">
             </div>
         `).join('')}
-        <button class="slide-nav prev" onclick="changeSlide(-1)">❮</button>
-        <button class="slide-nav next" onclick="changeSlide(1)">❯</button>
+        ${project.images.length > 1 ? `
+        <button class="slide-nav prev" onclick="changeSlide(-1)" aria-label="Previous image">❮</button>
+        <button class="slide-nav next" onclick="changeSlide(1)" aria-label="Next image">❯</button>
+        ` : ''}
         <div class="slide-dots">
             ${project.images.map((_, index) => `
                 <span class="slide-dot ${index === 0 ? 'active' : ''}" onclick="currentSlide(${index + 1})"></span>
             `).join('')}
         </div>
     `;
+
+    // Create thumbnail rail (only when there's more than one image)
+    const modalThumbs = modal.querySelector('.modal-thumbs');
+    if (modalThumbs) {
+        if (project.images.length > 1) {
+            modalThumbs.innerHTML = project.images.map((img, index) => `
+                <div class="modal-thumb ${index === 0 ? 'active' : ''}" onclick="currentSlide(${index + 1})">
+                    <img src="${img}" alt="${project.title} thumbnail ${index + 1}">
+                </div>
+            `).join('');
+            modalThumbs.style.display = 'flex';
+        } else {
+            modalThumbs.innerHTML = '';
+            modalThumbs.style.display = 'none';
+        }
+    }
 
     // Reset slide index and show first slide
     currentSlideIndex = 1;
@@ -194,6 +234,7 @@ function currentSlide(n) {
 function showSlides(n) {
     const slides = document.getElementsByClassName("modal-slide");
     const dots = document.getElementsByClassName("slide-dot");
+    const thumbs = document.getElementsByClassName("modal-thumb");
     
     if (!slides.length) return;
 
@@ -203,10 +244,17 @@ function showSlides(n) {
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
         dots[i].className = dots[i].className.replace(" active", "");
+        if (thumbs[i]) {
+            thumbs[i].className = thumbs[i].className.replace(" active", "");
+        }
     }
 
     slides[currentSlideIndex-1].style.display = "block";
     dots[currentSlideIndex-1].className += " active";
+    if (thumbs[currentSlideIndex-1]) {
+        thumbs[currentSlideIndex-1].className += " active";
+        thumbs[currentSlideIndex-1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
 }
 
 function scrollToSection(sectionId) {

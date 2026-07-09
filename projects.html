@@ -14,6 +14,7 @@
             <div class="logo">
                 <img src="images/mbagilogo.png" alt="Mbagi Ltd. Logo">
             </div>
+            <input type="checkbox" id="nav-toggle">
             <label for="nav-toggle" class="nav-toggle-label">
                 <span></span>
             </label>
@@ -41,24 +42,39 @@
 
     <!-- Residential Projects -->
     <section id="residential-projects" class="projects-section">
-        <h2>Residential Projects</h2>
+        <div class="section-head projects-section-head">
+            <span class="eyebrow dark">Where We've Built</span>
+            <h2>Residential Projects</h2>
+        </div>
         <div class="projects-grid">
             <div class="project-card" data-project="residential1">
                 <div class="project-image">
+                    <span class="project-badge">Residential</span>
                     <img src="images/roslyn1.jpg" alt="Roslyn Mansions">
+                    <div class="project-image-overlay">
+                        <span><i class="fas fa-expand"></i> View Details</span>
+                    </div>
                 </div>
                 <div class="project-info">
                     <h3>Roslyn Court</h3>
-                    <p>Compound Mansions</p>
+                    <p class="project-type">Compound Mansions</p>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> Roslyn, Nairobi</p>
+                    <span class="project-link">View Details <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
             <div class="project-card" data-project="residential2">
                 <div class="project-image">
+                    <span class="project-badge">Residential</span>
                     <img src="images/uthiru0.jpg" alt="Uthiru Condos">
+                    <div class="project-image-overlay">
+                        <span><i class="fas fa-expand"></i> View Details</span>
+                    </div>
                 </div>
                 <div class="project-info">
                     <h3>Markim Apartments</h3>
-                    <p>Condominium Style</p>
+                    <p class="project-type">Condominium Style</p>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> Uthiru, Nairobi</p>
+                    <span class="project-link">View Details <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>
@@ -66,25 +82,40 @@
 
     <!-- Commercial Projects -->
     <section id="commercial-projects" class="projects-section">
-        <h2>Commercial Projects</h2>
+        <div class="section-head projects-section-head">
+            <span class="eyebrow dark">Where We've Built</span>
+            <h2>Commercial Projects</h2>
+        </div>
         <div class="projects-grid">
             <div class="project-card" data-project="commercial1">
                 <div class="project-image">
+                    <span class="project-badge">Commercial</span>
                     <img src="images/agip.jpg" alt="Agip House">
+                    <div class="project-image-overlay">
+                        <span><i class="fas fa-expand"></i> View Details</span>
+                    </div>
                 </div>
                 <div class="project-info">
                     <h3>Agip House</h3>
-                    <p>Office Complex</p>
+                    <p class="project-type">Office Complex</p>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> Harambee Avenue, Nairobi</p>
+                    <span class="project-link">View Details <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
 
             <div class="project-card" data-project="commercial2">
                 <div class="project-image">
+                    <span class="project-badge">Commercial</span>
                     <img src="images/mumwe1.jpg.webp" alt="Mumwe Oak">
+                    <div class="project-image-overlay">
+                        <span><i class="fas fa-expand"></i> View Details</span>
+                    </div>
                 </div>
                 <div class="project-info">
                     <h3>Mumwe Oak</h3>
-                    <p>Education Center</p>
+                    <p class="project-type">Education Center</p>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> Runda Mumwe, Kiambu</p>
+                    <span class="project-link">View Details <i class="fas fa-arrow-right"></i></span>
                 </div>
             </div>
         </div>
@@ -93,23 +124,32 @@
     <!-- Project Modal -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-slideshow">
-                <!-- Slides will be inserted here by JavaScript -->
-            </div>
-            <div class="modal-info">
-                <h2 id="modal-title"></h2>
-                <div class="project-details">
-                    <div class="detail">
-                        <i class="fas fa-ruler-combined"></i>
-                        <span id="modal-dimensions"></span>
+            <button class="close-modal" aria-label="Close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-gallery">
+                    <div class="modal-slideshow">
+                        <!-- Slides will be inserted here by JavaScript -->
                     </div>
-                    <div class="detail">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span id="modal-location"></span>
+                    <div class="modal-thumbs">
+                        <!-- Thumbnails inserted by JavaScript -->
                     </div>
                 </div>
-                <p id="modal-description"></p>
+                <div class="modal-info">
+                    <span class="eyebrow dark" id="modal-category">Property</span>
+                    <h2 id="modal-title"></h2>
+                    <div class="project-details">
+                        <div class="detail">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span id="modal-dimensions"></span>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="modal-location"></span>
+                        </div>
+                    </div>
+                    <p id="modal-description"></p>
+                    <a href="contact.html" class="btn modal-cta">Enquire About This Property</a>
+                </div>
             </div>
         </div>
     </div>
